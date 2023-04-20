@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "iaas-jwt"
+version = "0.1.0"
+description = ""
+authors = ["Reinaldo Saraiva do Carmo <reinaldo.carmo@luizalabs.com>"]
+readme = "README.md"
+packages = [{include = "iaas_jwt"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
