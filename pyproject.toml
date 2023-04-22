@@ -8,15 +8,19 @@ packages = [{include = "iaas_jwt"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pytest = "7.2.1"
+pytest-cov = "4.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.3.1"
-pytest-cov = "^4.0.0"
 blue = "^0.9.1"
 isort = "^5.12.0"
 taskipy = "^1.10.4"
 pyjwt = {extras = ["crypto"], version = "^2.6.0"}
+fastapi = "^0.95.1"
+uvicorn = "^0.21.1"
+ipython = "^8.12.0"
+ipykernel = "^6.22.0"
 
 
 [tool.poetry.group.doc.dependencies]
@@ -31,14 +35,15 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 pythonpath = "."
-
+addopts = "--doctest-modules"
 [tool.isort]
 profile = "black"
 line_length = 79
 
 [tool.taskipy.tasks]
-lint = "blue --check --diff . && isort --check --diff ."
+lint = "blue . && isort ."
 docs = "mkdocs serve" 
 pre_test = "task lint"
-test = "pytest -s -x --cov=iaas_jwt -vv"
+test = "pytest -s -x --cov-report term --cov=iaas_jwt -vv"
 post = "coverage html"
+uvicorn = "uvicorn  iaas_jwt.main:app --reload"

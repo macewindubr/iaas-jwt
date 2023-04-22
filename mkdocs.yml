@@ -13,3 +13,17 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
+
+watch:
+  - iaas_jwt
+
+plugins:
+- macros
+- mkdocstrings:
+    handlers:
+      python:
+        paths: [iaas_jwt]
+
+extra:
+  commands:
+    run: iaas-jwt
