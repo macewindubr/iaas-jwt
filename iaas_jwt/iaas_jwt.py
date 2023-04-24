@@ -2,13 +2,13 @@ import jwt
 
 
 def gerador_hs256(sub, nome, apelido, segredo):
-    """
-    Gerar um token HS256
+    """Gerar um token HS256
+
     Args:
-        sub: identificador ou assunto
-        nome: nome completo do usuário
-        apelido: apelido do usuário
-        segredo: senha
+        sub(str): identificador ou assunto
+        nome(str): nome completo do usuário
+        apelido(str): apelido do usuário
+        segredo(str): senha
     Returns:
         Um dicionário com um token válido
     Examples:
@@ -18,3 +18,13 @@ def gerador_hs256(sub, nome, apelido, segredo):
     payload = {'sub': sub, 'nome': nome, 'apelido': apelido}
     token = jwt.encode(payload=payload, key=segredo)
     return {'token': token}
+
+
+def gerador_rs256(payload):
+    """_summary_
+
+    Args:
+        token (str): _description_
+        key (str): chave pública
+    """
+    ...
